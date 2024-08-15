@@ -1,0 +1,24 @@
+question:
+Buatlah function untuk mencetak pattern segitiga siku-siku terbalik dengan ketentuan sebagai berikut:
+    a.  Input user berupa panjang alas dan tinggi segitiga (alas 
+    dan tingginya sama) dengan ketentuan :
+        => 0 < Alas/Tinggi < 10
+    b.  Segitiga dibentuk dengan deret angka prima yang terus berlanjut 
+    meskipun barisnya berganti.
+
+input: 
+drawSikuSiku(7):
+
+output :
+2
+3   5
+7   11  13
+17  19  23  29
+31  37  41  43  47
+53  59  61  67  71  73
+79  83  89  97  101 103 107
+
+answer
+1. membuat segitiga siku-siku
+https://sarapankoding.com/blog/cara-membuat-program-pola-segitiga-bintang
+2. 
