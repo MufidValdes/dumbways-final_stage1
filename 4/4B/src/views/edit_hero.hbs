@@ -74,7 +74,7 @@
               />
               <div class="card-body text-capitalize text-white">
                 <h1 class="text-center text-capitalize"> Update Hero</h1>
-                <form enctype="multipart/form-data" action="/create" method="post">
+                <form enctype="multipart/form-data" action="/edit_hero" method="post">
                   <div class="col-md-12 mb-3">
                     <label for="name" class="form-label fw-semibold">Name</label>
                     <input
@@ -82,6 +82,7 @@
                       class="form-control"
                       id="name"
                       name="name"
+                      value="{{data.name}}"
                       placeholder="Hero Name"
                       required
                     />
@@ -102,6 +103,7 @@
                       type="file"
                       id="picture"
                       name="picture"
+                      value="{{data.photo}}"
                       required
                     />
                   </div>

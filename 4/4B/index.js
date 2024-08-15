@@ -35,24 +35,25 @@ app.use(
   })
 );
 
-app.get("/", home_render);
 app.get("/login", login_render);
-app.get("/register", register_render);
-app.get("/logout", logout);
 app.post("/login", loginbyEmail);
+
+app.get("/register", register_render);
 app.post("/register", registerbyUser);
+
+app.get("/logout", logout);
+
+app.get("/", home_render);
+app.get("/add_hero", addHero_render);
+app.post("/add_hero", upload.single("photo"), addHerobyId);
 
 app.get("/detail_hero", detailHero_render);
 app.get("/detail_hero/:id", detailHerobyId);
 
-app.get("/update_hero", updateHero_render);
-app.get("/update_hero", updateHerobyId);
+app.get("/delete_hero/:id", deleteHerobyId);
 
-app.get("/delete_hero", updateHerobyId);
-app.get("/edit_hero", updateHerobyId);
-
-app.get("/add_hero", addHero_render);
-app.post("/add_hero", upload.single("photo"), addHerobyId);
+app.post("/edit_hero", editHero_render);
+app.get("/edit_hero/:id", editHerobyId);
 
 async function home_render(req, res) {
   const { isLogin } = req.session;
@@ -79,6 +80,7 @@ function logout(req, res) {
     res.redirect("/");
   });
 }
+
 async function loginbyEmail(req, res) {
   const { email, password } = req.body;
 
@@ -103,7 +105,6 @@ async function loginbyEmail(req, res) {
     }
   });
 }
-
 async function registerbyUser(req, res) {
   try {
     const { username, email, password } = req.body;
@@ -131,6 +132,7 @@ async function registerbyUser(req, res) {
     console.log(error);
   }
 }
+
 function detailHero_render(req, res) {
   const { isLogin, user } = req.session;
 
@@ -154,12 +156,45 @@ async function detailHerobyId(req, res) {
     user,
   });
 }
-function updateHero_render(req, res) {
-  isLogin ? res.render("update_hero") : res.redirect("/login");
+async function deleteHerobyId(req, res) {
+  const { id } = req.params;
+
+  const query = `DELETE FROM heroes_tbs WHERE id=${id}`;
+  await sequelize.query(query, { type: QueryTypes.DELETE });
+
+  res.redirect("/");
 }
-function updateHerobyId(req, res) {
-  res.render("update_hero");
+async function editHerobyId(req, res) {
+  const { id } = req.params;
+  const {isLogin, user} = req.session;
+  const query = `SELECT FROM heroes_tbs WHERE id=${id}`;
+  const data = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  isLogin
+    ? res.render("edit_hero", { data, isLogin, user })
+    : res.redirect("/login");
 }
+
+async function editHero_render(req, res) {
+  const {idUser } = req.session;
+  const { id, name, type_id, photo } = req.body;
+
+  const typequery = `SELECT * FROM type_tbs`;
+  const typehero = await sequelize.query(typequery, { type: QueryTypes.SELECT });
+
+  const query = `
+  UPDATE heroes_tbs SET
+  name = '${name}, 
+  type_id = '${type_id}, 
+  photo = '${photo}, 
+  user_id = '${idUser}
+  WHERE
+  id=${id}`;
+  await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  res.redirect("/", {data: typehero});
+}
+
 async function addHero_render(req, res) {
   const { isLogin, user } = req.session;
   const query = `SELECT * FROM type_tbs`;
