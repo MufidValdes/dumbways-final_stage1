@@ -31,6 +31,7 @@
               width="84px"
             />
           </a>
+
           <div class="d-flex gap-3">
             <a
               name=""
@@ -41,6 +42,21 @@
               role="button"
               >Add Hero</a
             >
+            {{#if isLogin}}
+            <div class="d-grid gap-2">
+              <form action="/logout" method="post">
+              <button
+                type="button"
+                name=""
+                id=""
+                class="btn btn-primary"
+              >
+                Logout
+              </button>
+              </form>
+            </div>
+            
+            {{else}}
             <a
               name=""
               id=""
@@ -50,6 +66,7 @@
               role="button"
               >Login</a
             >
+            {{/if}}
           </div>
         </div>
       </nav>
@@ -58,6 +75,7 @@
       <div class="container-fluid mt-5 d-flex" style="justify-content: center">
         <div class="row m-0">
           <div class="col mb-3">
+            {{#each data}}
             <div
               class="card bg-dark border-3 border-white"
               style="width: 250px"
@@ -69,23 +87,29 @@
                 width=""
                 height="200px"
                 style="position: absolute; z-index: 2; object-fit: cover"
-              />
+              /> 
               <img
-                src="/uploads/"
+                src="/uploads/{{this.photo}}"
                 class="card-img-top rounded-top bg-white"
                 height="200px"
                 alt=""
               />
               <div class="card-body text-capitalize text-white">
-                <h5 class="card-title fs-2">name</h5>
-                <p class="card-text">skills</p>
+                <h5 class="card-title fs-2">{{this.name}}</h5>
+                <p class="card-text">{{this.type}}</p>
                 <div class="d-grid gap-2">
-                  <button type="button" name="" id="" class="btn btn-danger">
-                    Button
-                  </button>
+                  <a
+                    name=""
+                    id=""
+                    class="btn btn-danger"
+                    href="/detail_hero/{{this.id}}"
+                    role="button"
+                    >Detail</a
+                  >
                 </div>
               </div>
             </div>
+            {{/each}}
           </div>
         </div>
       </div>

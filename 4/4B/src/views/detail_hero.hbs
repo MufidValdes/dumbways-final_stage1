@@ -51,6 +51,9 @@
               >Add Type</a
             >
           </div>
+           {{#if isLogin}}
+           {{else}}
+            {{/if}}
         </div>
       </nav>
     </header>
@@ -70,21 +73,27 @@
                 style="position: absolute; z-index: 2; object-fit: cover"
               />
               <img
-                src="https://pnghq.com/wp-content/uploads/2023/02/meliodas-nanatsu-no-taizai-png-7215-768x589.png"
+                src="/uploads/{{data.photo}}"
                 class="card-img-top rounded-top bg-white"
                 height="200px"
                 alt=""
                 style="object-fit: contain"
               />
               <div class="card-body text-capitalize text-white">
-                <h5 class="card-title fs-2">name</h5>
-                <p class="card-text">skills</p>
+                <h5 class="card-title fs-2">Hero : {{data.name}}</h5>
+                <p class="card-text">type Card : {{data.type_id}}</p>
                 <p class="class-text text-justify">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Debitis blanditiis dolor deleniti doloribus minima, quos, sit
                   molestiae aut qui sunt eligendi cum soluta est repellat
                   similique consequuntur ipsa voluptates reprehenderit!
                 </p>
+                {{#if isLogin}}
+                    <div class="mt-2 d-flex gap-2">
+                        <a href="/edit-hero/{{data.id}}" class="btn btn-primary">Edit Hero</a>
+                        <a href="/delete/{{data.id}}" class="btn btn-danger">Delete Hero</a>
+                    </div>
+                    {{/if}}
               </div>
             </div>
           </div>
