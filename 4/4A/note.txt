@@ -1,0 +1,69 @@
+https://sequelize.org/docs/v6/getting-started/
+==> 
+--npm install sequelize
+--npm install --save pg pg-hstore
+https://sequelize.org/docs/v7/cli/
+==>
+--npm install --save-dev sequelize-cli
+--npx sequelize-cli init
+==>
+npx sequelize-cli model:generate --name users_tb --attributes email:string,username:STRING,password:STRING
+npx sequelize-cli model:generate --name heroes_tb --attributes name:string,type_id:INTEGER,photo:STRING,user_id:INTEGER
+npx sequelize-cli model:generate --name type_tb --attributes name:string
+==>
+npx sequelize-cli db:migrate
+==>
+============
+https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
+
+#CREATE
+==>sequelize 
+table_name.create({
+    column1: 'value1',
+    column2: 'value2',
+    .....dst
+});
+==>query
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...); 
+
+#UPDATE
+==>sequelize 
+table_name.update(
+    {
+        column1 : value1
+    },
+    where : {
+        condition
+    }
+);
+==>query
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+#SELECT
+==>sequelize 
+table_name.findAll(
+    attributes: ['column1','column2'],
+    where: {
+        condition
+    }
+);
+==>query
+SELECT column1, column2, ... 
+FROM table_name 
+WHERE condition
+-
+
+#DELETE
+==>sequelize 
+table_name.destroy({
+    where: {
+        column1 : value1 ,
+    },
+});
+==>query
+DELETE FROM table_name 
+WHERE condition;
+============
