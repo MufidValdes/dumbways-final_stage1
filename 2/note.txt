@@ -1,0 +1,18 @@
+question:
+Buatlah sebuah function sederhana untuk menghitung potongan harga,
+biaya yang harus dibayar, dan total kembalian pada sistem voucher 
+DumbWays Klontong , ketentuan : 
+    Voucher : 
+        a. DumbWaysJos, potongan 21,1%, minimal uang belanja 50000,
+            Maksimal diskon 20000
+        b. DumbWaysMantap, potongan 30%, minimal uang belanja 80000,
+            maksimal diskon 40000
+Clue : maka jika function dijalankan:
+    hitungVoucher(DumbWaysJos, 100000)
+	output :     
+        -	Uang yang harus dibayar : 80000
+        -   Diskon : 20000
+        -   Kembalian  : 20000
+
+answer
+1
