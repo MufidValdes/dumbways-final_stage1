@@ -55,6 +55,54 @@ app.get("/delete_hero/:id", deleteHerobyId);
 app.post("/edit_hero", editHero_render);
 app.get("/edit_hero/:id", editHerobyId);
 
+app.get("/add_type", addtype_render);
+app.post("/add_type", addtype_byId);
+
+app.get("/delete_type/:id", deletetype_byid);
+app.post("/edit_type/:id", edittype_byId);
+
+
+async function deletetype_byid(req, res) {
+  const {id} = req.params;
+
+  const query = `DELETE FROM type_tbs WHERE id='${id}'`;
+  await sequelize.query(query, { type: QueryTypes.DELETE });
+
+  res.redirect('/add_type'); 
+}
+
+async function edittype_byId(req, res) {
+  const  {id } = req.params
+  const { nametype } = req.body;
+
+  const query = `UPDATE type_tbs SET name = '${nametype}' WHERE id='${id}' `;
+  await sequelize.query(query, { type: QueryTypes.UPDATE });
+
+  res.redirect('/add_type'); 
+}
+
+async function addtype_byId(req, res) {
+  const { nametype } = req.body;
+
+  const query = `INSERT INTO type_tbs (name) VALUES ('${nametype}') `;
+  await sequelize.query(query, { type: QueryTypes.INSERT });
+
+  res.redirect('/add_type'); 
+}
+
+async function addtype_render(req, res) {
+  const { isLogin } = req.session;
+
+  const query = "SELECT * FROM type_tbs";
+  const result = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  isLogin ? res.render("add_type", {
+    data: result,
+    isLogin,
+  }): res.redirect('/login'); 
+}
+
+
 async function home_render(req, res) {
   const { isLogin } = req.session;
 
