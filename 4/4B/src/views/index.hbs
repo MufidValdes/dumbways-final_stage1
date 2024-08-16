@@ -36,7 +36,7 @@
             <a
               name=""
               id=""
-              class="btn btn-sm text-capitalize"
+              class="btn  text-capitalize"
               style="background-color: chocolate; color: white"
               href="/add_hero"
               role="button"
@@ -44,16 +44,15 @@
             >
             {{#if isLogin}}
             <div class="d-grid gap-2">
-              <form action="/logout" method="post">
-              <button
-                type="button"
+              <a
                 name=""
                 id=""
                 class="btn btn-primary"
+                href="/logout"
+                role="button"
+                >Logout</a
               >
-                Logout
-              </button>
-              </form>
+              
             </div>
             
             {{else}}
@@ -75,7 +74,7 @@
       <div class="container-fluid mt-5 d-flex" style="justify-content: center">
         <div class="row m-0">
             {{#each data}}
-          <div class="col mb-3">
+          <div class="col mb-4">
             <div
               class="card bg-dark border-3 border-white"
               style="width: 250px"
@@ -93,6 +92,7 @@
                 class="card-img-top rounded-top bg-white"
                 height="200px"
                 alt=""
+                style="object-fit:cover;"
               />
               <div class="card-body text-capitalize text-white">
                 <h5 class="card-title fs-2">{{this.name}}</h5>

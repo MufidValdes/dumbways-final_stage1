@@ -16,15 +16,14 @@ finish
 -- menampilkan detail hero 
 -- delete hero
 -- upload image
+-- add type
+-- logout
 to be update 
 
 bermasalah
 =>
--- logout
--- add type
---edit type
+-- edit type
 -- delete type
 -- edit hero
--- navbar belum diperbaiki (add type belum ada )
 -- update hero (list type hero)
 --

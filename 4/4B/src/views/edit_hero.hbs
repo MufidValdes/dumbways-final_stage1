@@ -18,7 +18,7 @@
         class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary"
       >
         <div class="container d-flex justify-content-between">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img
               src="https://vignette.wikia.nocookie.net/liberproeliis/images/c/ce/Nanatsu_no_taizai_logo.png/revision/latest?cb=20170309000013&path-prefix=pt-br"
               class="img-fluid rounded-top"
@@ -26,26 +26,6 @@
               width="84px"
             />
           </a>
-          <div class="d-flex gap-3">
-            <a
-              name=""
-              id=""
-              class="btn btn-sm text-capitalize"
-              style="background-color: chocolate; color: white"
-              href="#"
-              role="button"
-              >Add Hero</a
-            >
-            <a
-              name=""
-              id=""
-              class="btn btn-sm text-capitalize"
-              style="background-color: chocolate; color: white"
-              href="#"
-              role="button"
-              >Add Type</a
-            >
-          </div>
         </div>
       </nav>
     </header>
@@ -91,7 +71,7 @@
                     <label for="type" class="form-label">Type</label>
                     <select class="form-control" name="type" id="type" required>
                       <option></option>
-                      {{#each data}}
+                      {{#each type}}
                       <option value="{{this.id}}">{{this.name}}</option>
                       {{/each}}
                     </select>
@@ -102,7 +82,7 @@
                       class="form-control"
                       type="file"
                       id="picture"
-                      name="picture"
+                      name="photo"
                       value="{{data.photo}}"
                       required
                     />
