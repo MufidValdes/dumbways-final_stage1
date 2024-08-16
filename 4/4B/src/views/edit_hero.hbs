@@ -91,7 +91,7 @@
                     <label for="type" class="form-label">Type</label>
                     <select class="form-control" name="type" id="type" required>
                       <option></option>
-                      {{#each types}}
+                      {{#each data}}
                       <option value="{{this.id}}">{{this.name}}</option>
                       {{/each}}
                     </select>

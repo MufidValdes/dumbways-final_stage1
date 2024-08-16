@@ -41,7 +41,7 @@ app.post("/login", loginbyEmail);
 app.get("/register", register_render);
 app.post("/register", registerbyUser);
 
-app.get("/logout", logout);
+app.post("/logout", logout);
 
 app.get("/", home_render);
 app.get("/add_hero", addHero_render);
@@ -228,7 +228,7 @@ async function editHero_render(req, res) {
   const { id, name, type_id, photo } = req.body;
 
   const typequery = `SELECT * FROM type_tbs`;
-  const typehero = await sequelize.query(typequery, { type: QueryTypes.SELECT });
+  await sequelize.query(typequery, { type: QueryTypes.SELECT });
 
   const query = `
   UPDATE heroes_tbs SET
@@ -238,9 +238,9 @@ async function editHero_render(req, res) {
   user_id = '${idUser}
   WHERE
   id=${id}`;
-  await sequelize.query(query, { type: QueryTypes.SELECT });
+  await sequelize.query(query, { type: QueryTypes.UPDATE });
 
-  res.redirect("/", {data: typehero});
+  res.redirect("/", {data});
 }
 
 async function addHero_render(req, res) {

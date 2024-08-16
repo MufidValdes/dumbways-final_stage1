@@ -2,3 +2,29 @@ https://www.npmjs.com/package/multer
 npm install --save multer
 https://www.npmjs.com/package/hbs
 npm install hbs
+
+
+
+finish 
+=>
+--
+-- index page 
+-- login
+-- register 
+-- add heroes
+-- menampilkan heroes di halaman index
+-- menampilkan detail hero 
+-- delete hero
+-- upload image
+to be update 
+
+bermasalah
+=>
+-- logout
+-- add type
+--edit type
+-- delete type
+-- edit hero
+-- navbar belum diperbaiki (add type belum ada )
+-- update hero (list type hero)
+--
