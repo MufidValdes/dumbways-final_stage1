@@ -18,12 +18,11 @@ finish
 -- upload image
 -- add type
 -- logout
+-- delete type
+-- edit type
 to be update 
-
 bermasalah
 =>
--- edit type
--- delete type
 -- edit hero
 -- update hero (list type hero)
 --
