@@ -67,3 +67,8 @@ table_name.destroy({
 DELETE FROM table_name 
 WHERE condition;
 ============
+1.
+Menampilkan seluruh data heroes beserta type hero 
+SELECT heroes_tbs.id, heroes_tbs.name AS hero_name, type_tbs.name AS type_name, heroes_tbs.photo
+      FROM heroes_tbs JOIN type_tbs ON heroes_tbs.type_id = type_tbs.id;
+2.
