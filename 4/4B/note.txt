@@ -20,9 +20,9 @@ finish
 -- logout
 -- delete type
 -- edit type
+-- update hero (list type hero)
+-- edit hero
 to be update 
 bermasalah
 =>
--- edit hero
--- update hero (list type hero)
---
+-- clear

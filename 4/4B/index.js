@@ -51,14 +51,10 @@ app.post("/login", loginbyEmail);
 app.post("/register", registerbyUser);
 app.post("/add_hero", upload.single("photo"), addHerobyId);
 app.post("/add_type", addtype_byId);
-app.post("/edit_type/:typeid", edittype_byId);
+app.post("/edit_type/:id", edittype_byId);
 
 app.get("/edit_hero/:id", editHero_render);
 app.post("/edit_hero/:id",upload.single("photo"), editHerobyId);
-
-
-
-
 
 async function deletetype_byid(req, res) {
   const id = req.params.typeid;
@@ -68,19 +64,17 @@ async function deletetype_byid(req, res) {
 
   res.redirect('/add_type'); 
 }
-function type_render(req, res) {
-  res.render('/edit_type') 
-}
+
 async function edittype_render(req, res) {
   const id = req.params.typeid;
   
   const query = `SELECT * FROM type_tbs WHERE id='${id}'`;
-  const typeheroes =await sequelize.query(query, { type: QueryTypes.UPDATE });
+  const typeheroes =await sequelize.query(query, { type: QueryTypes.SELECT });
 
   res.render('edit_type', {data: typeheroes[0]}); 
 }
 async function edittype_byId(req, res) {
-  const id = req.params.typeid;
+  const {id} = req.params;
   const { nametype } = req.body;
 
   const query = `UPDATE type_tbs SET name = '${nametype}' WHERE id='${id}' `;
@@ -90,11 +84,9 @@ async function edittype_byId(req, res) {
 }
 
 async function addtype_byId(req, res) {
-  const { typename } = req.body;
+  const { inputname } = req.body;
 
-  const query = `INSERT INTO type_tbs (name,  "createdAt", 
-    "updatedAt") VALUES ('${typename}', NOW(),
-     NOW()) `;
+  const query = `INSERT INTO type_tbs (name, "createdAt", "updatedAt") VALUES ('${inputname}', NOW(), NOW())`;
   await sequelize.query(query, { type: QueryTypes.INSERT });
 
   res.redirect('/add_type'); 

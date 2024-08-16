@@ -13,38 +13,32 @@
     />
   </head>
   <body class="bg-dark text-white">
-    <header>
+     <header>
       <nav
         class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary"
       >
         <div class="container d-flex justify-content-between">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img
               src="https://vignette.wikia.nocookie.net/liberproeliis/images/c/ce/Nanatsu_no_taizai_logo.png/revision/latest?cb=20170309000013&path-prefix=pt-br"
               class="img-fluid rounded-top"
-              alt=""
+              alt="Nanatsu no Taizai"
               width="84px"
             />
           </a>
           <div class="d-flex gap-3">
             <a
-              name=""
-              id=""
-              class="btn btn-sm text-capitalize"
-              style="background-color: chocolate; color: white"
-              href="#"
+              class="btn btn-sm text-white"
+              style="background-color: #ff6347;"
+              href="/add_hero"
               role="button"
-              >Add Hero</a
-            >
+            >Add Hero</a>
             <a
-              name=""
-              id=""
-              class="btn btn-sm text-capitalize"
-              style="background-color: chocolate; color: white"
-              href="#"
+              class="btn btn-sm text-white"
+              style="background-color: #ff6347;"
+              href="/add_type"
               role="button"
-              >Add Type</a
-            >
+            >Add Type</a>
           </div>
         </div>
       </nav>
@@ -52,89 +46,48 @@
     <!-- Main -->
     <main id="main">
       <div class="container-fluid mt-5 d-flex" style="justify-content: center">
-        <div class="row m-0">
-          <div class="col mb-3">
-            <div
-              class="card bg-dark border-3 border-white"
-              style="width: 350px"
-            >
+        <div class="row justify-content-center">
+         <div class="col-md-6 mb-4">
+            <div class="card bg-dark border-3 border-white">
               <img
                 src="https://static.vecteezy.com/system/resources/previews/013/281/142/large_2x/live-streaming-overlay-with-red-and-dark-color-stream-overlay-design-with-buttons-for-online-gamers-offline-frame-design-for-gamers-live-gaming-screen-panel-overlay-with-stream-buttons-free-png.png"
                 class="card-img-top rounded-top"
-                alt=""
-                width=""
-                style="position: absolute; z-index: 2; object-fit: cover"
+                alt="Overlay Image"
+                height="240px"
+                style="position: absolute; z-index: 1; object-fit:fill;"
               />
               <img
                 src="https://th.bing.com/th/id/OIP.Oqc_5F7YI_0gCPfO3XbMWAHaEK?rs=1&pid=ImgDetMain"
                 class="card-img-top rounded-top bg-white"
-                height="200px"
-                alt=""
-                style="object-fit: contain"
+                height="240px"
+                alt="Background Image"
+                style="object-fit: contain;"
               />
-              <div class="card-body text-capitalize text-white">
-                <h1 class="text-center text-capitalize"> EDIT type</h1>
-                <form enctype="form-data" action="/add_type" method="post">
-                  <div class="col-md-12 mb-3">
-                    <label for="inputName" class="form-label fw-semibold">Name</label>
+              <div class="card-body text-white" style="z-index: 2;">
+                <h1 class="text-center">Edit Type</h1>
+                <div class="mb-3">
+                  <form enctype="form-data" action="/edit_type/{{data.id}}" method="post">
+                    <label for="inputname" class="form-label">Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="inputName"
                       name="nametype"
-                      placeholder="type Name"
-                      required
+                      id="inputname"
+                      aria-describedby="helpId"
+                      placeholder="Hero Name"
+                      value="{{data.name}}"
                     />
-                  </div>
-                  <div class="d-grid gap-2">
-                    <input
-                      type="submit"
-                      value="Submit"
-                      class="btn btn-danger "
-                      id="submitButton"
-                    />
-                  </div>
-                </form>
+                    <div class="d-grid mt-3">
+                      <button
+                        type="submit"
+                        class="btn btn-danger"
+                      >Submit</button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-          <div
-            class="container-fluid"
-          >
-            <div
-              class="row justify-content-center align-items-center g-2"
-            >
-                 {{#each data}}
-              <div class="col">
-                  <div class="card text-dark">
-                    <div class="card-body">
-                      <h4 class="card-title">Type Name: {{this.name}}</h4>
-
-                    </div>
-                     <div class="d-grid gap-2">
-                      <a
-                        name=""
-                        id=""
-                        class="btn btn-primary"
-                        href="#"
-                        role="button"
-                      
-                        >Edit TYpe</a
-                      >
-                      <a
-                        name=""
-                        id=""
-                        class="btn btn-primary"
-                        href="#"
-                        role="button"
-                        >Delete TYpe</a
-                      >       
-                  </div>
-                  </div>
-              </div>
-                   {{/each}}
-              
-            </div>
             
           </div>
           
